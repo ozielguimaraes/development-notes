@@ -15,6 +15,12 @@ App Icon Generator - https://appicon.co/
 
 Launcher icon generator - https://romannurik.github.io/AndroidAssetStudio/index.html
 
+#### Get keystore information such as certificates fingerprints (SHA1, SHA256), alias name, owner, organization, fullname
+Execute the command bellow replacing with your actual keystore path:
+
+`keytool -list -v -keystore "C:\Users\admin\AppData\Local\Xamarin\Mono for Android\Keystore\SuperGrupos\SuperGrupos.keystore"`
+
+
 #### How to create Android Facebook Key Hash?
 
 `keytool -exportcert -alias androiddebugkey -keystore "C:\Documents and Settings\Administrator.android\debug.keystore" | "C:\OpenSSL\bin\openssl" sha1 -binary |"C:\OpenSSL\bin\openssl" base64`
