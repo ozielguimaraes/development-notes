@@ -39,6 +39,10 @@ _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-f
 `adb shell pm list packages`
 
 
+#### Adding new directory to system environment 'path'
+
+`setx path "%path%;c:\directoryPath"`
+
 
 ### For iOS
 App Icon Generator - https://appicon.co/
