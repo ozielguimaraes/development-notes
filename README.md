@@ -22,7 +22,6 @@ Execute the command bellow replacing with your actual keystore path:
 
 
 #### How to create Android Facebook Key Hash?
-
 `keytool -exportcert -alias androiddebugkey -keystore "C:\Documents and Settings\Administrator.android\debug.keystore" | "C:\OpenSSL\bin\openssl" sha1 -binary |"C:\OpenSSL\bin\openssl" base64`
 
 _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-facebook-key-hash
@@ -30,17 +29,21 @@ _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-f
 
 
 #### List all devices
-
 `adb devices`
 
 
 #### List all apps that is installed in my device, make sure to have just one device online
-
 `adb shell pm list packages`
+
+#### Install an apk to device
+`adb uninstall com.myapp.android`
+
+
+#### Uninstall apk from device
+`adb install "C:\Users\admin\Downloads\app-brazil-debug.apk"`
 
 
 #### Adding new directory to system environment 'path'
-
 `setx path "%path%;c:\directoryPath"`
 
 
