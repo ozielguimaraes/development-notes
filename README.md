@@ -29,6 +29,17 @@ _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-f
 
 
 
+#### List all devices
+
+`adb devices`
+
+
+#### List all apps that is installed in my device, make sure to have just one device online
+
+`adb shell pm list packages`
+
+
+
 ### For iOS
 App Icon Generator - https://appicon.co/
 
