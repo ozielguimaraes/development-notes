@@ -31,6 +31,8 @@ _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-f
 #### List all devices
 `adb devices`
 
+#### See log from specific device on specific app
+`adb -s emulator-5554 logcat | findstr my.app.packagename`
 
 #### List all apps that is installed in my device, make sure to have just one device online
 `adb shell pm list packages`
