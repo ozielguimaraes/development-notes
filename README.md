@@ -53,3 +53,5 @@ _Reference_: https://stackoverflow.com/questions/7506392/how-to-create-android-f
 App Icon Generator - https://appicon.co/
 
 ## [DotNet](DOTNET.md)
+
+## [Xamarin](Xamarin.md)
