@@ -5,6 +5,12 @@
 ## Notes
 Write readme online with https://dillinger.io
 
+## SSH
+### Create a new SSH key
+`ssh-keygen -t rsa -C hi@ozielguimaraes.dev`
+
+### See ssh key
+`cat ~/.ssh/id_rsa.pub`
 
 ## Rest api
 ###  Mock
