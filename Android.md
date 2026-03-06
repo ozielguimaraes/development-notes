@@ -88,4 +88,4 @@ This value is required for **Android App Links**.
 
 See:
 
-**AndroidAppLink.md**
+[Android App Link Guide](AndroidAppLink.md)
