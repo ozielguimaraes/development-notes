@@ -90,7 +90,7 @@ The file **must be accessible** at:
 
     https://yourdomain.com/.well-known/assetlinks.json
 
-Both versions should work:
+Both versions should work, if not use ONLY the version that works:
 
     https://yourdomain.com
     https://www.yourdomain.com
@@ -112,4 +112,4 @@ instead of the browser.
 
 See:
 
-**Android.md**
+[Android](Android.md)
