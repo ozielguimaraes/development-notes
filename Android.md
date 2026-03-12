@@ -1,91 +1,24 @@
 # Android Development Notes
 
-Quick commands and utilities for everyday Android development.
+Common commands and utilities for everyday Android development.
 
-------------------------------------------------------------------------
+---
+
+# 📦 Downloads
+
+The following helper documents are available in this folder:
+
+- 📄 [ADB Cheatsheet](./adb-cheatsheet.md)
+- 📄 [Firebase Push Debugging Guide](./firebase-debugging.md)
+- 📄 [Android App Link Guide](./AndroidAppLink.md)
+
+Click any file above to open or download it.
+
+---
+
+# Environment
 
 ## Check Java Version
 
-``` bash
+```bash
 java -version
-```
-
-------------------------------------------------------------------------
-
-## Check ADB Devices
-
-``` bash
-adb devices
-```
-
-------------------------------------------------------------------------
-
-## Install APK
-
-``` bash
-adb install app.apk
-```
-
-Force reinstall:
-
-``` bash
-adb install -r app.apk
-```
-
-------------------------------------------------------------------------
-
-## View Device Logs
-
-``` bash
-adb logcat
-```
-
-Filter by package:
-
-``` bash
-adb logcat | grep your.package.name
-```
-
-------------------------------------------------------------------------
-
-## Clear App Data
-
-``` bash
-adb shell pm clear your.package.name
-```
-
-------------------------------------------------------------------------
-
-## Uninstall App
-
-``` bash
-adb uninstall your.package.name
-```
-
-------------------------------------------------------------------------
-
-## Generate SHA256 From Keystore
-
-``` bash
-keytool -list -v -keystore your-keystore.jks -alias your-alias
-```
-
-Debug keystore example:
-
-``` bash
-keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-```
-
-Look for:
-
-    SHA256:
-
-This value is required for **Android App Links**.
-
-------------------------------------------------------------------------
-
-## Related Documentation
-
-See:
-
-[Android App Link Guide](AndroidAppLink.md)
