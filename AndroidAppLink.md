@@ -1,115 +1,91 @@
-# Android App Links
+# Android App Links Guide
 
-Guide for configuring **Android App Links** with domain verification.
-
-------------------------------------------------------------------------
-
-## 1. Create assetlinks.json
-
-File location on your website:
-
-    https://yourdomain.com/.well-known/assetlinks.json
+Android App Links allow your app to open automatically when a user clicks a verified URL.
 
 Example:
 
-``` json
+https://example.com/profile/123
+
+Instead of opening the browser, Android launches the app.
+
+---
+
+## Step 1 – Add Intent Filter
+
+Add this to your AndroidManifest.xml.
+
+<intent-filter android:autoVerify="true">
+    <action android:name="android.intent.action.VIEW"/>
+
+    <category android:name="android.intent.category.DEFAULT"/>
+    <category android:name="android.intent.category.BROWSABLE"/>
+
+    <data
+        android:scheme="https"
+        android:host="example.com"/>
+</intent-filter>
+
+---
+
+## Step 2 – Create Asset Links File
+
+Create the file:
+
+https://example.com/.well-known/assetlinks.json
+
+Example:
+
 [
   {
-    "relation": [
-      "delegate_permission/common.handle_all_urls"
-    ],
+    "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "your.package.name",
+      "package_name": "com.example.app",
       "sha256_cert_fingerprints": [
-        "YOUR_SHA256_HERE"
+        "YOUR_SHA256_CERTIFICATE"
       ]
     }
   }
 ]
-```
 
-------------------------------------------------------------------------
+---
 
-## 2. Get SHA256 From Keystore
+## Step 3 – Generate SHA256 Certificate
 
-``` bash
+Use:
+
 keytool -list -v -keystore your-keystore.jks -alias your-alias
-```
 
-Debug example:
+For debug builds:
 
-``` bash
-keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-```
+keytool -list -v \
+-keystore ~/.android/debug.keystore \
+-alias androiddebugkey \
+-storepass android \
+-keypass android
 
-Copy the value under:
+Copy the value from:
 
-    SHA256:
+SHA256:
 
-------------------------------------------------------------------------
+---
 
-## 3. Configure AndroidManifest
+## Step 4 – Verify App Link
 
-``` xml
-<intent-filter android:autoVerify="true">
-    <action android:name="android.intent.action.VIEW" />
+Check verification status:
 
-    <category android:name="android.intent.category.DEFAULT" />
-    <category android:name="android.intent.category.BROWSABLE" />
-
-    <data
-        android:scheme="https"
-        android:host="yourdomain.com" />
-</intent-filter>
-```
-
-------------------------------------------------------------------------
-
-## 4. Verify Domain
-
-Install the app and run:
-
-``` bash
-adb shell pm verify-app-links your.package.name
-```
-
-Check status:
-
-``` bash
 adb shell pm get-app-links your.package.name
-```
 
-------------------------------------------------------------------------
+Trigger link test:
 
-## 5. Common Problems
+adb shell am start -a android.intent.action.VIEW -d "https://example.com/test"
 
-### 404 on assetlinks.json
+---
 
-The file **must be accessible** at:
+## Common Problems
 
-    https://yourdomain.com/.well-known/assetlinks.json
-
-Both versions should work, if not use ONLY the version that works:
-
-    https://yourdomain.com
-    https://www.yourdomain.com
-
-------------------------------------------------------------------------
-
-## 6. Test Link
-
-Open a link:
-
-    https://yourdomain.com/path
-
-If domain verification succeeds, Android opens the **app directly**
-instead of the browser.
-
-------------------------------------------------------------------------
-
-## Related Documentation
-
-See:
-
-[Android](Android.md)
+| Issue | Cause |
+|------|------|
+| Link opens browser | assetlinks.json missing |
+| Verification failed | wrong SHA256 |
+| App not opening | incorrect host configuration |
